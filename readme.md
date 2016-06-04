@@ -1,0 +1,1 @@
+*** example to show how to bridge java util log, common log, log4j to slf4j
