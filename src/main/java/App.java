@@ -19,7 +19,6 @@ public class App {
     static Log commonLog = LogFactory.getLog(App.class);
 
     public static void main(String[] args) {
-        SLF4JBridgeHandler.removeHandlersForRootLogger();
         SLF4JBridgeHandler.install();
         julLogger.log(Level.FINE, "jul debug");
         slf4jLogger.debug("slf4j debug");

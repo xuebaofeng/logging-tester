@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configuration debug="true">
-    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator"/>
+<configuration debug="true" scan="true" scanPeriod="30 seconds" packagingData="true">
+
+    <jmxConfigurator/>
+
+    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+        <resetJUL>true</resetJUL>
+    </contextListener>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!-- encoders are assigned the type
@@ -9,7 +14,12 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
         </encoder>
     </appender>
-    <root level="debug">
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
         <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <root level="debug">
+        <appender-ref ref="ASYNC"/>
     </root>
 </configuration>
